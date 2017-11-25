@@ -873,5 +873,5 @@ Section 3: Lecture 47 //Adding Content to the Recipes Components
 =================================================================================================================================================================
 
 
-Start from lecture 39, section 3
+Start from lecture 47, section 3
 revision section 3 lecture 39, continue from lecture 39	
