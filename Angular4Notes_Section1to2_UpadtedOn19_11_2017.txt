@@ -822,7 +822,7 @@ section 3: Lecture 45 // Alternative Non-Collapsable Navigation Bar
 2. You can either add such a menu on your own, our you replace collapse navbar-collapse  with just navbar-default
 
 ==================================================================================================================================================================
-Section 3: Lecture 46 //
+Section 3: Lecture 46 //Creating a "Recipe" Model
 
 1. We added the header in last lecture now I want to work on my recipes, so we get recipe component which holds the recipe list
 2. I will go into my recipe list component and we will learn more about ng or init later in the next module or the components module.
@@ -861,17 +861,274 @@ export class Recipe{
 
 11. We will aslo have a constructor here so that we can instantiate it with a new keyword and pass the arguments.
 12. Inside the body of this constructor we have to assign the arguments that we receive to the properties of our object now to the properties of our class.
-13. 
+
 
 ================================================================================================================================================================= 
 Section 3: Lecture 47 //Adding Content to the Recipes Components
 
 
-1. 
+1. We added our recipe model, now lets use it. Back in the recipe-list component I added my recipes array and now that we have created the model we can also 
+	we can aslo find a type for this.
+	
+	export class RecipeListComponent implements OnInit{
+	rescipes: Recipe[] =[];            // we add colon to inform typescript that now we will definethe type of this property, so the type here will be recipe i.e. that is our own model.
+	}
+
+2. Above we have not only added the Recipe model as a type but also we have added it as Recipe array type, the square[] bracket after it indicates that.
+3. The only things that will get stored in this Recipe array is the couple of Recipe objects.
+4. No such objects is also a possibilty too; but its certailnly not string or numbers.
+5. Now to inform typescript, from where this type is coming from we need to add a import:
+
+	import {Recipe} from '../recipe.model'; //inside the curly braces here is the class name, that what we have to specify between the curly braces;
+	
+	//here by using ../ we navigated up one folder and then there is a recipe model file 
+	
+6. Now, with this we can use this model and then we can manage our recipes here.
+7. Now lets start with one dummy recipe, here I will use a new keyword to create a new object based on our class 
+
+			export class RecipeListComponent implements OnInit{
+	rescipes: Recipe[] =[
+		new Recipe('A Test Recipe','This is simply a test','https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg' )  //first we gave a name, second we gave a description and third one is image path
+	];           
+	}
+8. Now executing it like a method, we are actually calling the constructor.
+9. So, here we need to pass the arguments we are expecting in this constructor that is name description and image path.
+10. Now you may choose any name you want, we'll name it as a test recipe so that will be the title - the name of the recipe then description, here for the image path
+	I am going to use the images from the web (so we are going to use a URL).
+11. So in the third parameter of the paranthesis we put the image path as string.
+12. Now, we whould be able to use it later, once we output this so that we are using our own model.
+13. We're using it here in the recipe list compnent, ofcource you wont be able to see anything for now.
+14. So, to see that we should actually do something in the template of the recipe this component here i am right now only outputting my recipe item and I want
+	to loop through all these items and use them to display my recipes. For now what I will do is I will add a bootstrap row first of all.
+15. Go inside the recipe-list.component.html and add the following things:		
+		
+		<div class="row">
+			<div class="col-xs-12">   //this is the xs class 12, it will spent over the full width
+				<button class="btn btn-success">New Recipe</button>  //here we will later add a button for the functionality to create a new recipe
+			</div>
+			<hr>
+			<div class="col-xs-12">   //adding another row below which will have my list of recipes
+				<a href="#" class="list-group-item clearfix">           //the single recipe item should be clickable, also add clearfix otherwise it will probably look wrong
+					<div class="pull-left">                             //since i want to have it in the left of the list item 
+						<h4 class="list-group-item-heading">Recipe Name</h4>       //recipe name; these are all the bootstrap classes that we are using here, we will soon replace it with the dyamic content
+						<p class="list-group-item-text">Description of the Recipe</p>
+					</div> 
+					<span src="" alt="" class="img-responsive" style="max-height: 50px;"></span>  //img-responsive will just resize the image accordingly
+				</a>
+					<app-recipe-item></app-recipe-item>  
+			</div>
+		</div>
+16. We'll go to app recipe cource section after next cource section.
+17. On more thing I want to set on the image though is, I want to add my own style.
+18. I will simply add an inline style, I'll here set the maximum height of that item 250 pixels so that we cannot go above and bootstrap will handle the rest and resize the image approximately.
+19. Now, with that the goal is to replicate this item again and will later put it into its own component, then we will fill the spces above (Places where we have added nothing i.e. src="" and alt="") with the dynamic data.
+
+================================================================================================================================================================================================
+Section 3: Lecture 48 //Outputting a List of Recipes with ngFor
+
+1. So are ou successfull using our recipes array here and replicate below given part as often as needed and fill it with the data for the recipe:
 
 
-=================================================================================================================================================================
+<a href="#" class="list-group-item clearfix" *ngFor="Let recipe of recipes">           //the single recipe item should be clickable, also add clearfix otherwise it will probably look wrong
+					<div class="pull-left">                             //since i want to have it in the left of the list item 
+						<h4 class="list-group-item-heading">{{ recipe.name }}</h4>       //recipe name; these are all the bootstrap classes that we are using here, we will soon replace it with the dyamic content
+						<p class="list-group-item-text">{{ recipe.description }}</p>
+					</div> 
+					<span src="{{ recipe.imagePath }}" alt="{{ recipe.name }}" class="img-responsive" style="max-height: 50px;"></span>  //img-responsive will just resize the image accordingly
+				</a>
+				
+2. Clearly we need *ngFor for this, which is the directive that allows us to repeate the code in our template and here  want to loop through all the recipes; so i will create a local variable recipe
+3. resipes array simply holds an array of our recipes.
+4. So a single item of our recipe will be our model type i.e. recipe.model.ts - which containes the name, description and the image part.
+5. so, we can access the name out of recipe object in the string interpolation.
+7. Inside the recipe.model.ts the constructor has 3 arguments which are not available to the outside world so you just need to use the variables given on the top.
+8. in the src we can use below given 2 methods src="{{ recipe.imagePath }}" or [src]="recipe.imagePath";
+
+===============================================================================================================================================================================================
+Section 3: Lecture 49 //Displaying Recipe Details
+
+1. In the last lecture we finished the recipe-list component, now lets finish the recipe detail component
+2. Now, in recipe-detail.component.html create another bootstrap row:
+
+		<div class="row">
+			<div class="col-xs-12">   //this is the xs class 12, it will spent over the full width
+				<img src="" alt="" class="img-responsive">
+			</div>						
+		</div>
+		<div class="row">
+			<div class="col-xs-12">   //this is the xs class 12, it will spent over the full width
+				<h1>Recipe Name</h1>
+			</div>						
+		</div>
+		<div class="row">
+			<div class="col-xs-12">   //this is the xs class 12, it will spent over the full width
+				<div class="btn-group">
+				<button type="button" class="btn btn-primary dropdown-toggle">Manage Recipe<span class="caret"></sapn></button>
+				</div>
+				<ul class="dropdown-menu">
+				<li><a href="#">Shopping List</a></li>
+				<li><a href="#">Edit Recipe</a></li>
+				<li><a href="#">Delete Recipe</a></li>
+				</ul>
+			</div>						
+		</div>
+		<div class="row">
+			<div class="col-xs-12">   //this is the xs class 12, it will spent over the full width
+				Description
+			</div>						
+		</div>
+		<div class="row">
+			<div class="col-xs-12">   //this is the xs class 12, it will spent over the full width
+				Ingredients
+			</div>						
+		</div>
+		
+3. As of now, cross component communication is a huge issue rite now, but that is the part we will dig deeper into in the next course section and there after we will come back to this
+	and enable all the communication.
+
+===============================================================================================================================================================================================
+Section 3: Lecture 50 //Working on the ShoppingListComponent
+
+1. We finished for now all our recipe compnents and lets work on shopping list now.
+2. In the shopping-list component- in the HTML template, I want to output unordered list:
+		
+			<div class="row">
+			<div class="col-xs-10">   
+				<app-shopping-edit></app-shopping-edit>
+				<hr>
+				<ul class="list-group">
+					<a class="list-group-item" style="cursor: pointer">
+						
+					</a>
+				</ul>
+			</div>						
+		</div>
+		
+3. Now, inside shopping-list.component.ts add the ingredients array:
+
+        export class ShoppingListComponent implements onInit {
+			ingredients = [];
+			
+			constructor(){}
+			
+			ngOninit(){
+			}
+		}
+		
+=============================================================================================================================================================================================
+Section 3: Lecture 51 //Creating an "Ingredient" Model
+
+1. We are going to use ingredients a lot in our application, making model for them makes sense; now, where do we store this ingredient model:
+2. We stored the recipe model in the recipe folder because it belongs there feature wise but where does the ingredient model belong to. I beleive its belongs to a new folder the shared folder
+	inside the app folder.
+3. It contains the features or elements of our app which are shared across different features.
+4. app > Shared > ingredients.model.ts 
+
+		export classIngredient {
+				public name: string;
+				public amount: number;
+				
+				
+				constructor(name: string, amount: number){
+					this.name = name;
+					this.amount = amount;
+				}
+		}
+		
+		
+5. Now, below is the optimized code for the above written code:
+
+          export classIngredient {
+					constructor(public name: string, public amount: number){
+					}
+		}
+6. With that we defined, how an ingredient should look like.
+
+==================================================================================================================================================================================================
+Section 3: Lecture 52 //Creating and Outputting the shopping List
+
+1. We can now define type for our ingredients array, which would be Ingredient[]; below is the code for that;
+		
+			 export class ShoppingListComponent implements onInit {
+			ingredients: Ingredient[] = [];
+			
+			constructor(){}
+			
+			ngOninit(){
+			}
+		}
+		
+2. Also please import the ingredient in the shopping-list.component.ts file:
+
+		import { Ingredient } from '../shrared/ingredient.model';
+
+3. With that we can add our first ingredient in the array as shown in the code below:
+
+		
+			 export class ShoppingListComponent implements onInit {
+			ingredients: Ingredient[] = [
+				new Ingredient('Apples', 5),
+				new Ingredient('Tomatos', 10)  //this is our shopping list for now
+			];
+			
+			constructor(){}
+			
+			ngOninit(){
+			}
+		}
+		
+4. Now inside the shopping-list.component.ts, we will put *ngFor to loop through all the ingredients:
+
+			<div class="row">
+			<div class="col-xs-10">   
+				<app-shopping-edit></app-shopping-edit>
+				<hr>
+				<ul class="list-group">
+					<a class="list-group-item" style="cursor: pointer"  *ngFor="let ingredient of ingredients">
+						{{ ingredient.name }} ({{ ingredient.amount }})
+					</a>
+				</ul>
+			</div>						
+		</div>
+		
+=============================================================================================================================================================================================
+Section 3: Lecture 53 //Adding a Shopping List Edit section
+
+1. Now, lets add to the shopping-edit.component.html file
+
+			<div class="row">
+			<div class="col-xs-12">   
+				<form> 
+					<div class="row">
+						<div class="col-sm-5 form-group">
+							<label for="name">Name</label>
+							<input type="text" id="name" class="form-control">
+						<div>
+						<div class="col-sm-2 form-group">
+							<label for="amount">Amount</label>
+							<input type="number" id="amount" class="form-control">
+						<div>						
+					</div>
+					<div class="row">
+						<div class="col-xs-12 form-group">
+							<button class="btn btn-success" type="submit">Add</button>
+							<button class="btn btn-danger" type="button">Delete Item</button>
+							<button class="btn btn-primary" type="button">Clear</button>
+						<div>										
+					</div>
+				</form>
+			</div>						
+		</div>
 
 
-Start from lecture 47, section 3
-revision section 3 lecture 39, continue from lecture 39	
+=============================================================================================================================================================================================
+Section 3: Lecture 54 //Wrap up & Next steps
+
+1. Thats the first basic setup, ofcourse we can improve this app; I dont want to have the recipes and shopping-lists components on the same page, we'll fix this soon as of now 
+	we have this temporarily, we will come up with the real solution later in the course.
+2. And I also want my compnents to comunicate with each other.
+3. The blocking thing right now is the component communication.
+
+===============================================================================================================================================================================================
+Start from lecture 55, section 4
+revision section 4 lecture 55, continue from lecture 55   /// create from lecture 43
