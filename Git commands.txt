@@ -1,0 +1,86 @@
+PS D:\Notes> git clone https://github.com/sukhmeet1609/notes.git
+Cloning into 'notes'...
+warning: You appear to have cloned an empty repository.
+PS D:\Notes> git add -A
+fatal: Not a git repository (or any of the parent directories): .git
+PS D:\Notes> git status
+fatal: Not a git repository (or any of the parent directories): .git
+PS D:\Notes> cd notes
+PS D:\Notes\notes> cd notes
+cd : Cannot find path 'D:\Notes\notes\notes' because it does not exist.
+At line:1 char:1
++ cd notes
++ ~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (D:\Notes\notes\notes:String) [Set-Location], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+
+PS D:\Notes\notes> git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        Angular4Notes_Section1to2_UpadtedOn19_11_2017.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+PS D:\Notes\notes> git add -A
+PS D:\Notes\notes> git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   Angular4Notes_Section1to2_UpadtedOn19_11_2017.txt
+
+PS D:\Notes\notes> git commit -m"first notes"
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'sukhm@DESKTOP-MTH9HH4.(none)')
+PS D:\Notes\notes> git commit -m"first notes"
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'sukhm@DESKTOP-MTH9HH4.(none)')
+PS D:\Notes\notes> git config --global user.email sukhmeet1609@gmail.com
+PS D:\Notes\notes> git config --global user.email "sukhmeet1609@gmail.com"
+PS D:\Notes\notes> git config --global user.name "sukhmeet1609"
+PS D:\Notes\notes> git commit -m"first notes"
+[master (root-commit) fd7216e] first notes
+ 1 file changed, 877 insertions(+)
+ create mode 100644 Angular4Notes_Section1to2_UpadtedOn19_11_2017.txt
+PS D:\Notes\notes> git status
+On branch master
+Your branch is based on 'origin/master', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+nothing to commit, working tree clean
+PS D:\Notes\notes> git push
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 16.21 KiB | 3.24 MiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/sukhmeet1609/notes.git
+ * [new branch]      master -> master
+PS D:\Notes\notes>

@@ -1,0 +1,10 @@
+Windows Commands
+
+
+wmic os get caption
+wmic os get osarchitecture
+
+
+D:\mongDbData
+
+"C:\Program Files\MongoDB\Server\3.4\bin\mongod.exe" --dbpath D:\mongDbData

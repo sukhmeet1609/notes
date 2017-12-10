@@ -1,0 +1,105 @@
+(c) 2016 Microsoft Corporation. All rights reserved.
+
+C:\WINDOWS\system32>npm install -g npm
+C:\Users\sukhm\AppData\Roaming\npm\npm -> C:\Users\sukhm\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js
++ npm@5.0.3
+added 346 packages in 64.891s
+
+C:\WINDOWS\system32>npm uninstall -g angular-cli @angular/cli
+removed 1 package in 0.061s
+
+C:\WINDOWS\system32>npm cache clean
+npm ERR! As of npm@5, the npm cache self-heals from corruption issues and data extracted from the cache is guaranteed to be valid. If you want to make sure everything is consistent, use 'npm cache verify' instead.
+npm ERR!
+npm ERR! If you're sure you want to delete the entire cache, rerun this command with --force.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     C:\Users\sukhm\AppData\Roaming\npm-cache\_logs\2017-06-10T07_19_34_801Z-debug.log
+
+C:\WINDOWS\system32>npm install -g @angular/cli
+C:\Users\sukhm\AppData\Roaming\npm\ng -> C:\Users\sukhm\AppData\Roaming\npm\node_modules\@angular\cli\bin\ng
+
+> node-sass@4.5.3 install C:\Users\sukhm\AppData\Roaming\npm\node_modules\@angular\cli\node_modules\node-sass
+> node scripts/install.js
+
+Downloading binary from https://github.com/sass/node-sass/releases/download/v4.5.3/win32-x64-57_binding.node
+Download complete  ] - :
+Binary saved to C:\Users\sukhm\AppData\Roaming\npm\node_modules\@angular\cli\node_modules\node-sass\vendor\win32-x64-57\binding.node
+Caching binary to C:\Users\sukhm\AppData\Roaming\npm-cache\node-sass\4.5.3\win32-x64-57_binding.node
+
+> fsevents@1.1.1 install C:\Users\sukhm\AppData\Roaming\npm\node_modules\@angular\cli\node_modules\fsevents
+> node install
+
+
+> node-sass@4.5.3 postinstall C:\Users\sukhm\AppData\Roaming\npm\node_modules\@angular\cli\node_modules\node-sass
+> node scripts/build.js
+
+Binary found at C:\Users\sukhm\AppData\Roaming\npm\node_modules\@angular\cli\node_modules\node-sass\vendor\win32-x64-57\binding.node
+Testing binary
+Binary is fine
++ @angular/cli@1.1.1
+added 828 packages in 211.984s
+
+C:\WINDOWS\system32>
+
+
+=======================================================================================================================================================
+=======================================================================================================================================================
+=======================================================================================================================================================
+
+
+C:\WINDOWS\system32>ng new my-first-app
+installing ng
+  create .editorconfig
+  create README.md
+  create src\app\app.component.css
+  create src\app\app.component.html
+  create src\app\app.component.spec.ts
+  create src\app\app.component.ts
+  create src\app\app.module.ts
+  create src\assets\.gitkeep
+  create src\environments\environment.prod.ts
+  create src\environments\environment.ts
+  create src\favicon.ico
+  create src\index.html
+  create src\main.ts
+  create src\polyfills.ts
+  create src\styles.css
+  create src\test.ts
+  create src\tsconfig.app.json
+  create src\tsconfig.spec.json
+  create src\typings.d.ts
+  create .angular-cli.json
+  create e2e\app.e2e-spec.ts
+  create e2e\app.po.ts
+  create e2e\tsconfig.e2e.json
+  create .gitignore
+  create karma.conf.js
+  create package.json
+  create protractor.conf.js
+  create tsconfig.json
+  create tslint.json
+Installing packages for tooling via npm.
+Installed packages for tooling via npm.
+Project 'my-first-app' successfully created.
+
+===========================================================================================================================================================
+===========================================================================================================================================================
+
+C:\WINDOWS\system32>cd my-first-app
+
+C:\Windows\System32\my-first-app>ng serve
+** NG Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200 **
+Hash: 4b550301c48b5999d913
+Time: 13954ms
+chunk    {0} polyfills.bundle.js, polyfills.bundle.js.map (polyfills) 160 kB {4} [initial] [rendered]
+chunk    {1} main.bundle.js, main.bundle.js.map (main) 5.36 kB {3} [initial] [rendered]
+chunk    {2} styles.bundle.js, styles.bundle.js.map (styles) 10.5 kB {4} [initial] [rendered]
+chunk    {3} vendor.bundle.js, vendor.bundle.js.map (vendor) 2.11 MB [initial] [rendered]
+chunk    {4} inline.bundle.js, inline.bundle.js.map (inline) 0 bytes [entry] [rendered]
+webpack: Compiled successfully.
+
+
+============================================================================================================================================================
+============================================================================================================================================================
+
