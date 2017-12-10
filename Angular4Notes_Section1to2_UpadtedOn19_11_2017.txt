@@ -791,19 +791,19 @@ Section 3: Lecture 44 //Adding a navigation Bar
 	header class.
 4. Now, lets work on actual links
 	
-	<nav class="navbar navbar-default"> //this is the bootstrap class which will give me default header.
+	<nav class="navbar navbar-default"> 
 	<div class="container-fluid">
 		<div class="navbar-header">
-		 <a href="#" class="navbar-brand">Recipe Book</a>  //this will make it clickable header, we will have the value for href when we will do the routing; lets have # as of now
+		 <a href="#" class="navbar-brand">Recipe Book</a> 
 		</div>	
-		<div class="collapse navbar-collapse"> //now here I want to have some list items
+		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="a">Recipes</a></li>  //in this if we add some list elements then they will sit next to each other, htey will automaticlly be
-				<li><a href="a">Shopping List</a></li>	 // be positioned correctly by bootstrap		 
+				<li><a href="#">Recipes</a></li>  
+				<li><a href="#">Shopping List</a></li>	 		 
 			</ul>
 			<ul class="nav navbar-nav navbar-right" >
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" role="button">Manage<span class="caret"><span></a>
+					<a href="#" class="dropdown-toggle" role="button">Manage<span class="caret"></span></a>
 					<ul dropdown-menu>
 						<li><a href="#">Save Data</a></li>
 						<li><a href="#">Fetch Data</a></li>
@@ -887,7 +887,7 @@ Section 3: Lecture 47 //Adding Content to the Recipes Components
 7. Now lets start with one dummy recipe, here I will use a new keyword to create a new object based on our class 
 
 			export class RecipeListComponent implements OnInit{
-	rescipes: Recipe[] =[
+	recipes: Recipe[] =[
 		new Recipe('A Test Recipe','This is simply a test','https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg' )  //first we gave a name, second we gave a description and third one is image path
 	];           
 	}
@@ -929,7 +929,7 @@ Section 3: Lecture 48 //Outputting a List of Recipes with ngFor
 1. So are ou successfull using our recipes array here and replicate below given part as often as needed and fill it with the data for the recipe:
 
 
-<a href="#" class="list-group-item clearfix" *ngFor="Let recipe of recipes">           //the single recipe item should be clickable, also add clearfix otherwise it will probably look wrong
+<a href="#" class="list-group-item clearfix" *ngFor="let recipe of recipes">           //the single recipe item should be clickable, also add clearfix otherwise it will probably look wrong
 					<div class="pull-left">                             //since i want to have it in the left of the list item 
 						<h4 class="list-group-item-heading">{{ recipe.name }}</h4>       //recipe name; these are all the bootstrap classes that we are using here, we will soon replace it with the dyamic content
 						<p class="list-group-item-text">{{ recipe.description }}</p>
@@ -950,20 +950,21 @@ Section 3: Lecture 49 //Displaying Recipe Details
 1. In the last lecture we finished the recipe-list component, now lets finish the recipe detail component
 2. Now, in recipe-detail.component.html create another bootstrap row:
 
+		
 		<div class="row">
-			<div class="col-xs-12">   //this is the xs class 12, it will spent over the full width
-				<img src="" alt="" class="img-responsive">
+			<div class="col-xs-12">   
+				<img src="" alt="" class="img-responsive"/>
 			</div>						
 		</div>
 		<div class="row">
-			<div class="col-xs-12">   //this is the xs class 12, it will spent over the full width
+			<div class="col-xs-12">   
 				<h1>Recipe Name</h1>
 			</div>						
 		</div>
 		<div class="row">
-			<div class="col-xs-12">   //this is the xs class 12, it will spent over the full width
+			<div class="col-xs-12">   
 				<div class="btn-group">
-				<button type="button" class="btn btn-primary dropdown-toggle">Manage Recipe<span class="caret"></sapn></button>
+				<button type="button" class="btn btn-primary dropdown-toggle">Manage Recipe<span class="caret"></span></button>
 				</div>
 				<ul class="dropdown-menu">
 				<li><a href="#">Shopping List</a></li>
@@ -973,12 +974,12 @@ Section 3: Lecture 49 //Displaying Recipe Details
 			</div>						
 		</div>
 		<div class="row">
-			<div class="col-xs-12">   //this is the xs class 12, it will spent over the full width
+			<div class="col-xs-12">   
 				Description
 			</div>						
 		</div>
 		<div class="row">
-			<div class="col-xs-12">   //this is the xs class 12, it will spent over the full width
+			<div class="col-xs-12">   
 				Ingredients
 			</div>						
 		</div>
@@ -1024,7 +1025,7 @@ Section 3: Lecture 51 //Creating an "Ingredient" Model
 3. It contains the features or elements of our app which are shared across different features.
 4. app > Shared > ingredients.model.ts 
 
-		export classIngredient {
+		export class Ingredient {
 				public name: string;
 				public amount: number;
 				
@@ -1038,7 +1039,7 @@ Section 3: Lecture 51 //Creating an "Ingredient" Model
 		
 5. Now, below is the optimized code for the above written code:
 
-          export classIngredient {
+          export class Ingredient {
 					constructor(public name: string, public amount: number){
 					}
 		}
@@ -1097,28 +1098,32 @@ Section 3: Lecture 53 //Adding a Shopping List Edit section
 1. Now, lets add to the shopping-edit.component.html file
 
 			<div class="row">
-			<div class="col-xs-12">   
-				<form> 
-					<div class="row">
-						<div class="col-sm-5 form-group">
-							<label for="name">Name</label>
-							<input type="text" id="name" class="form-control">
-						<div>
-						<div class="col-sm-2 form-group">
-							<label for="amount">Amount</label>
-							<input type="number" id="amount" class="form-control">
-						<div>						
-					</div>
-					<div class="row">
-						<div class="col-xs-12 form-group">
-							<button class="btn btn-success" type="submit">Add</button>
-							<button class="btn btn-danger" type="button">Delete Item</button>
-							<button class="btn btn-primary" type="button">Clear</button>
-						<div>										
-					</div>
-				</form>
-			</div>						
-		</div>
+  <div class="col-xs-12"> 
+  
+    <form> 
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" class="form-control">
+        </div>
+		
+        <div class="col-sm-2 form-group">
+          <label for="amount">Amount</label>
+          <input type="number" id="amount" class="form-control">
+        </div>						
+      </div>
+	  
+      <div class="row">
+        <div class="col-xs-12 form-group">
+          <button class="btn btn-success" type="submit">Add</button>
+          <button class="btn btn-danger" type="button">Delete Item</button>
+          <button class="btn btn-primary" type="button">Clear</button>
+        </div>										
+      </div>
+    </form>
+	
+  </div>						
+</div>
 
 
 =============================================================================================================================================================================================
@@ -1131,4 +1136,4 @@ Section 3: Lecture 54 //Wrap up & Next steps
 
 ===============================================================================================================================================================================================
 Start from lecture 55, section 4
-revision section 4 lecture 55, continue from lecture 55   /// create from lecture 43
+revision section 4 lecture 55, continue from lecture 55   /// create from lecture 44 
