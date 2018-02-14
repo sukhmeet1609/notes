@@ -176,9 +176,9 @@ SECTION 2: Lecture 4
 				import {Component} from '@angular/core';
 				@Component({
 					selector:'app-server',                                 //selector is used to fetch this component in the HTML code later,
-                                                                                               this selector should always be unique
+                                                                                               //this selector should always be unique
 					templateUrl:'./server.component.html',                 //this is always a relative path in respect to the folder structure of 
-                                                                                               the project
+                                                                                               //the project
 					styles: [`
 						.online{
 								color: white;
@@ -515,8 +515,10 @@ Section 2: Lecture 33 //Using ngIf to output data conditionally
 2. For condetionally showing a message, for this, we can use a directive shipping with angular ngIf directive.
 3. ngIf works like an if statement. 
 
-<p *ngIf="serverCreated">Server was created, server name is {{ serverName }}</p> //ngIf is added by adding a *, i.e. *ngIf, this important - the * is required because ngIf is able
-//structural directive; which means it changes the structure of our DOM, i.e. it either adds this element or it doesn't add it. So thats some extra information for angular.
+<p *ngIf="serverCreated">Server was created, server name is {{ serverName }}</p> //ngIf is added by adding a *, i.e. *ngIf, this important - the * is required 
+because ngIf is able
+//structural directive; which means it changes the structure of our DOM, i.e. it either adds this element or it doesn't add it. So thats some extra 
+//information for angular.
 
 4. The directive itself is ngIf but the star is required, because without it, it will not work correctly
 
@@ -525,7 +527,8 @@ Section 2: Lecture 33 //Using ngIf to output data conditionally
 =================================================================================================================================================================
 Section 2: Lecture 34 //Enhancing ngIf with an else condetion.
 
-1. In the last lecture we have looked at the basic ngIf syntax and that's the syntax you are going to use most of the time and there is no alternative to it though.
+1. In the last lecture we have looked at the basic ngIf syntax and that's the syntax you are going to use most of the time and there is no alternative to 
+   it though.
 2. but, sometimes you don't only have the if condetion but also the else condetion.
 
 <p *ngIf="serverCreated; else noServer">Server was created, server name is {{ serverName }}</p> //ng if enhanced with the marker noServer
@@ -554,8 +557,8 @@ Section 2: Lecture 35 //Styling Elements Dynamically with ngStyle
 	
 6. We used property binding on the ngStyle directive to give it some configuration to use it. 
 7. Note: its very important to understand here that the square barckets on the directive are not the part of the directive.
-8. The directive name is just ngStyle, the square brackets indicate that we want to bind some property on this directive and this property name happens to be ngStyle
-   We will se this in this in the practice session on our own directives in the practice session later.
+8. The directive name is just ngStyle, the square brackets indicate that we want to bind some property on this directive and this property name happens to be 
+   ngStyle.We will se this in this in the practice session on our own directives in the practice session later.
 9. But super important to undrstand is that property binding is not same as a directive, we are binding a property of the directive.
 10. This ngStyle property expects to get a JavaScript object and here we define key value pairs of this style name as to key and the value of the style as value.
 11.  well you know for example we could bind background color and if you want to use this notation with the dash ("-"), you have to wrap it in single quotation 
@@ -594,10 +597,10 @@ Section 2: Lecture 36 //Applying CSS classes Dynamically with ngClass
    value like disabled which took true or false.
 5. ngClass object works like this, we also have key value pairs. The key are the CSS class names and the values are the condetions determining wether this class
    should be attached or not, so here we have the online class -  you could also wrapp it in single quote marks.
-6. If you have class name with a dash inside of it or something like this, and here , well, I want to attach only if the server is online, so only if the server status
-   is online.
-7. Here it is a string between single quotation marks, now, ofcourse you could also outsource this method you call this service status equal online check., but here I will
-   write it inline.
+6. If you have class name with a dash inside of it or something like this, and here , well, I want to attach only if the server is online, so only if the 
+   server status is online.
+7. Here it is a string between single quotation marks, now, ofcourse you could also outsource this method you call this service status equal online check., 
+   but here I will write it inline.
 8. So if this is online we should attach the CSS class online to this paragraph, otherwise it should not get attached.
 
 ==================================================================================================================================================================
@@ -605,14 +608,16 @@ Section 2: Lecture 37 //Outputing Lists with ngFor
 
 
 1. With all these directives learnt lets's now have a look at the last built in directives and important one though.
-2. In our servers compoenet here we write manually - add our apps server component twice, it would be nice to have an array of servers which adds dinemically.
+2. In our servers component here we write manually - add our apps server component twice, it would be nice to have an array of servers which adds dinemically.
 3. So in the servers component we will add a new property - servers. And this is an array, and here we can have my test server and my test server to maybe.
-4. When we create a new server, I actually want to access the array of the servers and push new server on it and this should ofcourse use the server name I setup
+4. When we create a new server, I actually want to access the array of the servers and push new server on it and this should ofcourse use the server name I 
+   setup
 5. Now, with this I have an array of servers. It would be great if we can replicate the app server component as often as needed to have a server for each 
    element in the array.
 6. *ngFor is also a structural directive, so it will have a star (*) on it.
 
-<app-server *ngFor="let server of servers"></app-server> //servers here is the property that we defined inside the typescript file; here server is the dynamic server variable.
+<app-server *ngFor="let server of servers"></app-server> //servers here is the property that we defined inside the typescript file; here server is the 
+                                                          //dynamic server variable.
 
 7. Now, loop through all the elements in this array and assign the individual element to the dynamic server variable.
 
@@ -663,15 +668,16 @@ Section 3: Lecture 41 // setting up the application
 3. now, to add bootstrap just run the following command inside this project folder in commandline:
 		npm install --save bootstrap //we have typed this in the terminal; this will automatically install the latest version of bootstrap in this project.
 
-4. Now we also need to inform CLI that the bootstrap should be included in the final bundle it creates for us., because of the CLI bundles , all our scripts and style files
-	by default it would not inlude bootstrap.
+4. Now we also need to inform CLI that the bootstrap should be included in the final bundle it creates for us., because of the CLI bundles , all our scripts 
+   and style files by default it would not inlude bootstrap.
 5. So, to inform the angular we need to go to the .angular-cli.json file, and here in the styles array we can add only of the global style stylesheets, which
 	would be available to our whole project.
 6. Now, it already has styles.css file for the whole application/project ; here we will simply add the path to our bootstrap styles.
 7. Now, we can have look that where it is stored, in the node modules folder which manages all our dependencies.
 8. If we have a look at the bootstrap folder, the dist folder sounds right for distribution -  there we have the CSS folder and here is the CSS file
 	that probably we need.
-9. Now we can quickly import that file in .angular-cli.json file in styles; here we need to go up one level first i.e.  "../node_modules/bootstrap/dist/css/bootstrap.css"
+9. Now we can quickly import that file in .angular-cli.json file in styles; here we need to go up one level first 
+   i.e.  "../node_modules/bootstrap/dist/css/bootstrap.css"
 10. To be precise it would be better to target the minni file, which is the file also lying in that folder, so we have final path below
 		"../node_modules/bootstrap/dist/css/bootstrap.min.css"
 11. This will give us access to the mini file folder, which is smaller.
@@ -813,19 +819,21 @@ Section 3: Lecture 44 //Adding a navigation Bar
  <nav class="navbar navbar-default"> //this is the bootstrap class which will give me default header.
 	<div class="container-fluid">
 		<div class="navbar-header">
-		 <a href="#" class="navbhar-brand">Recipe Book</a>  //this will make it clickable header, we will have the value for href when we will do the routing; lets have # as of now
+		 <a href="#" class="navbhar-brand">Recipe Book</a>  //this will make it clickable header, we will have the value for href when we will do the routing;
+                                                             //lets have # as of now
 		</div>	
 	</div>
  </nav>
  
-3. Now, we will keep a container fluid div there to have may own container there and the first thing we want to have there is header, for that we get the navigation bar
-	header class.
+3. Now, we will keep a container fluid div there to have may own container there and the first thing we want to have there is header, for that we get 
+   the navigation bar header class.
 4. Now, lets work on actual links
 	
 	<nav class="navbar navbar-default"> //this is the bootstrap class which will give me default header.
 	<div class="container-fluid">
 		<div class="navbar-header">
-		 <a href="#" class="navbar-brand">Recipe Book</a>  //this will make it clickable header, we will have the value for href when we will do the routing; lets have # as of now
+		 <a href="#" class="navbar-brand">Recipe Book</a>  //this will make it clickable header, we will have the value for href when we will do the routing; 
+		                                                   //lets have # as of now
 		</div>	
 		<div class="collapse navbar-collapse"> //now here I want to have some list items
 			<ul class="nav navbar-nav">
@@ -872,14 +880,15 @@ Section 3: Lecture 46 //Creating a "Recipe" Model
 export class Recipe{
 }
 
-9. A model in the end should be a blueprint we create and a typescript class does this job. A class can be instantiated so we can create new objects based on the 
-	setup we provide here in; so we can define how a recipe should look like in this class.
+9. A model in the end should be a blueprint we create and a typescript class does this job. A class can be instantiated so we can create new objects based 
+  on the setup we provide here in; so we can define how a recipe should look like in this class.
 10. A recipe should have a name and add access or to be really clear about that this is publicly available.
 
 export class Recipe{
 
 	public name: string;         // here it would be a public property i.e. name of string type.
-	public description: string; //In this case I also want to have a description in each recipe so, I'll add my description property which also will be a string
+	public description: string; //In this case I also want to have a description in each recipe so, I'll add my description property which also will 
+	                            //be a string
 	public imagePath: string;   //Now, maybe we also want to store an image for each recipe so we should have the image path since we don't
 	
 	constructor(name: string, desc: string, imagePath: string){ //constructor simply is a built in function every class has
@@ -902,7 +911,8 @@ Section 3: Lecture 47 //Adding Content to the Recipes Components
 	we can aslo find a type for this.
 	
 	export class RecipeListComponent implements OnInit{
-	rescipes: Recipe[] =[];            // we add colon to inform typescript that now we will definethe type of this property, so the type here will be recipe i.e. that is our own model.
+	rescipes: Recipe[] =[];            // we add colon to inform typescript that now we will definethe type of this property, so the type here will be 
+	                                    //recipe i.e. that is our own model.
 	}
 
 2. Above we have not only added the Recipe model as a type but also we have added it as Recipe array type, the square[] bracket after it indicates that.
@@ -919,13 +929,14 @@ Section 3: Lecture 47 //Adding Content to the Recipes Components
 
 			export class RecipeListComponent implements OnInit{
 	rescipes: Recipe[] =[
-		new Recipe('A Test Recipe','This is simply a test','https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg' )  //first we gave a name, second we gave a description and third one is image path
+		new Recipe('A Test Recipe','This is simply a test','https://cdn.pixabay.com/photo/2016/06/15/19/09/food-1459693_960_720.jpg' )  //first we gave 
+		                         //a name, second we gave a description and third one is image path
 	];           
 	}
 8. Now executing it like a method, we are actually calling the constructor.
 9. So, here we need to pass the arguments we are expecting in this constructor that is name description and image path.
-10. Now you may choose any name you want, we'll name it as a test recipe so that will be the title - the name of the recipe then description, here for the image path
-	I am going to use the images from the web (so we are going to use a URL).
+10. Now you may choose any name you want, we'll name it as a test recipe so that will be the title - the name of the recipe then description, here for the 
+    image path I am going to use the images from the web (so we are going to use a URL).
 11. So in the third parameter of the paranthesis we put the image path as string.
 12. Now, we whould be able to use it later, once we output this so that we are using our own model.
 13. We're using it here in the recipe list compnent, ofcource you wont be able to see anything for now.
@@ -939,9 +950,11 @@ Section 3: Lecture 47 //Adding Content to the Recipes Components
 			</div>
 			<hr>
 			<div class="col-xs-12">   //adding another row below which will have my list of recipes
-				<a href="#" class="list-group-item clearfix">           //the single recipe item should be clickable, also add clearfix otherwise it will probably look wrong
+				<a href="#" class="list-group-item clearfix">           //the single recipe item should be clickable, also add clearfix otherwise it will
+                                                                        //probably look wrong
 					<div class="pull-left">                             //since i want to have it in the left of the list item 
-						<h4 class="list-group-item-heading">Recipe Name</h4>       //recipe name; these are all the bootstrap classes that we are using here, we will soon replace it with the dyamic content
+						<h4 class="list-group-item-heading">Recipe Name</h4>       //recipe name; these are all the bootstrap classes 
+						                                                         //that we are using here, we will soon replace it with the dyamic content
 						<p class="list-group-item-text">Description of the Recipe</p>
 					</div> 
 					<span src="" alt="" class="img-responsive" style="max-height: 50px;"></span>  //img-responsive will just resize the image accordingly
@@ -951,8 +964,10 @@ Section 3: Lecture 47 //Adding Content to the Recipes Components
 		</div>
 16. We'll go to app recipe cource section after next cource section.
 17. On more thing I want to set on the image though is, I want to add my own style.
-18. I will simply add an inline style, I'll here set the maximum height of that item 250 pixels so that we cannot go above and bootstrap will handle the rest and resize the image approximately.
-19. Now, with that the goal is to replicate this item again and will later put it into its own component, then we will fill the spces above (Places where we have added nothing i.e. src="" and alt="") with the dynamic data.
+18. I will simply add an inline style, I'll here set the maximum height of that item 250 pixels so that we cannot go above and bootstrap will handle the rest 
+    and resize the image approximately.
+19. Now, with that the goal is to replicate this item again and will later put it into its own component, then we will fill the spces above (Places where 
+    we have added nothing i.e. src="" and alt="") with the dynamic data.
 
 ================================================================================================================================================================================================
 Section 3: Lecture 48 //Outputting a List of Recipes with ngFor
@@ -960,19 +975,25 @@ Section 3: Lecture 48 //Outputting a List of Recipes with ngFor
 1. So are ou successfull using our recipes array here and replicate below given part as often as needed and fill it with the data for the recipe:
 
 
-<a href="#" class="list-group-item clearfix" *ngFor="Let recipe of recipes">           //the single recipe item should be clickable, also add clearfix otherwise it will probably look wrong
+<a href="#" class="list-group-item clearfix" *ngFor="Let recipe of recipes">           //the single recipe item should be clickable, also add clearfix 
+                                                                                      //otherwise it will probably look wrong
 					<div class="pull-left">                             //since i want to have it in the left of the list item 
-						<h4 class="list-group-item-heading">{{ recipe.name }}</h4>       //recipe name; these are all the bootstrap classes that we are using here, we will soon replace it with the dyamic content
+						<h4 class="list-group-item-heading">{{ recipe.name }}</h4>       //recipe name; these are all the bootstrap classes that we are using 
+						                                                                 //here, we will soon replace it with the dyamic content
 						<p class="list-group-item-text">{{ recipe.description }}</p>
 					</div> 
-					<span src="{{ recipe.imagePath }}" alt="{{ recipe.name }}" class="img-responsive" style="max-height: 50px;"></span>  //img-responsive will just resize the image accordingly
+					<span src="{{ recipe.imagePath }}" alt="{{ recipe.name }}" class="img-responsive" style="max-height: 50px;"></span>  //img-responsive 
+					                                                                                                                      //will just resize 
+																																		  //the image accordingly
 				</a>
 				
-2. Clearly we need *ngFor for this, which is the directive that allows us to repeate the code in our template and here  want to loop through all the recipes; so i will create a local variable recipe
+2. Clearly we need *ngFor for this, which is the directive that allows us to repeate the code in our template and here  want to loop through all the recipes; 
+   so i will create a local variable recipe
 3. resipes array simply holds an array of our recipes.
 4. So a single item of our recipe will be our model type i.e. recipe.model.ts - which containes the name, description and the image part.
 5. so, we can access the name out of recipe object in the string interpolation.
-7. Inside the recipe.model.ts the constructor has 3 arguments which are not available to the outside world so you just need to use the variables given on the top.
+7. Inside the recipe.model.ts the constructor has 3 arguments which are not available to the outside world so you just need to use the variables given on 
+   the top.
 8. in the src we can use below given 2 methods src="{{ recipe.imagePath }}" or [src]="recipe.imagePath";
 
 ===============================================================================================================================================================================================
@@ -1014,8 +1035,8 @@ Section 3: Lecture 49 //Displaying Recipe Details
 			</div>						
 		</div>
 		
-3. As of now, cross component communication is a huge issue rite now, but that is the part we will dig deeper into in the next course section and there after we will come back to this
-	and enable all the communication.
+3. As of now, cross component communication is a huge issue rite now, but that is the part we will dig deeper into in the next course section and there 
+   after we will come back to this and enable all the communication.
 
 ===============================================================================================================================================================================================
 Section 3: Lecture 50 //Working on the ShoppingListComponent
@@ -1050,8 +1071,8 @@ Section 3: Lecture 50 //Working on the ShoppingListComponent
 Section 3: Lecture 51 //Creating an "Ingredient" Model
 
 1. We are going to use ingredients a lot in our application, making model for them makes sense; now, where do we store this ingredient model:
-2. We stored the recipe model in the recipe folder because it belongs there feature wise but where does the ingredient model belong to. I beleive its belongs to a new folder the shared folder
-	inside the app folder.
+2. We stored the recipe model in the recipe folder because it belongs there feature wise but where does the ingredient model belong to. I beleive its 
+   belongs to a new folder the shared folder inside the app folder.
 3. It contains the features or elements of our app which are shared across different features.
 4. app > Shared > ingredients.model.ts 
 
@@ -1155,7 +1176,8 @@ Section 3: Lecture 53 //Adding a Shopping List Edit section
 =============================================================================================================================================================================================
 Section 3: Lecture 54 //Wrap up & Next steps
 
-1. Thats the first basic setup, ofcourse we can improve this app; I dont want to have the recipes and shopping-lists components on the same page, we'll fix this soon as of now 
+1. Thats the first basic setup, ofcourse we can improve this app; I dont want to have the recipes and shopping-lists components on the same page, 
+   we'll fix this soon as of now 
 	we have this temporarily, we will come up with the real solution later in the course.
 2. And I also want my compnents to comunicate with each other.
 3. The blocking thing right now is the component communication.
