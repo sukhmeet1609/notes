@@ -701,10 +701,10 @@ Section 3: Lecture 41 // setting up the application
 ========================================================================================================================================================================
 Section 3: Lecture 42 //Creating the components
 
-1. While creating the components try to create a clever folder structure in your app folder, notevery component should have folder on the root level.
+1. While creating the components try to create a clever folder structure in your app folder, not every component should have folder on the root level.
 2. You should also nest them by feature maybe, try to make atleast one component by hand manually and not using the CLI.
-3. We have got two main areas i.e. Recipe and Shopping list, and we get this header compnent.
-4. Now, we will create this header component manually, we will create the headed folder in the app component.
+3. We have got two main areas i.e. Recipe and Shopping list, and we get this header component.
+4. Now, we will create this header component manually, we will create the header folder in the app component.
 5. then we will name it as header.component.ts for typescript file and in the similar way for other files.
 6. Now, as we learnt that a component is just a typescript class and as of now that would not be recognized as a component by angular.
 7. Instead here we have to add @component decorator and later we are going to use the auto import feature on our ID.
@@ -729,7 +729,7 @@ Section 3: Lecture 42 //Creating the components
 
 		<app-header></app-header>
 		
-12. if we get "loading..." in the brouser wehn we run the application, this means that there is some error; now open the Java Script console of your brouser 
+12. if we get "loading..." in the browser when we run the application, this means that there is some error; now open the Java Script console of your brouser 
 	to see the error.
 13. Here we got the error, that <app-header> is not a known component; now as you know we need to register all our components in the app.module.ts.
 14. So, here we have not registered our new component in app.module.ts
